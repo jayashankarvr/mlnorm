@@ -47,9 +47,7 @@ use unicode_normalization::UnicodeNormalization;
 
 use crate::transforms::{archaic, digits, mojibake, punct, spoof};
 
-// ---------------------------------------------------------------------------
-// Relevant codepoints (named once, used everywhere, DRY).
-// ---------------------------------------------------------------------------
+// Relevant codepoints, named once and reused.
 
 /// U+0D4D MALAYALAM SIGN VIRAMA (chandrakkala).
 const VIRAMA: char = '\u{0D4D}';
@@ -456,7 +454,7 @@ mod tests {
         assert_eq!(normalize(&once), once);
     }
 
-    // ---- stripped_key ----
+    // stripped_key
 
     #[test]
     fn stripped_key_removes_kept_zwnj() {

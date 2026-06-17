@@ -89,6 +89,6 @@ version (0.4.0).
 ## License
 
 Apache-2.0. See `LICENSE` and `NOTICE`. Contributions are accepted under Apache-2.0
-§5 (inbound = outbound); no separate CLA is required.
+section 5 (inbound = outbound); no separate CLA is required.
 
 Sources for the normalization facts are credited in `REFERENCES.md`.
