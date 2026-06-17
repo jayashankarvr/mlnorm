@@ -10,6 +10,14 @@ The core is a small pure-Rust crate with one runtime dependency
 (`unicode-normalization`). A PyO3 wheel exposes the same functions to Python with
 byte-identical output.
 
+## Install
+
+```sh
+cargo add mlnorm
+```
+
+Also available for Python on PyPI (same byte-identical output): `pip install mlnorm`.
+
 ## What it does
 
 An ordered pipeline of small transforms:
