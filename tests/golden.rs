@@ -4,7 +4,7 @@
 //! Golden-file tests for the normalizer, the release tripwire.
 //!
 //! Each entry in `tests/golden/cases.json` is an `input -> expected` pair. A diff
-//! against `expected` blocks the release (see `docs/components/mlnorm.md`,
+//! against `expected` blocks the release (see `docs/components/mlnormalize.md`,
 //! "Testing"). The cases cover, per the doc's checklist:
 //!
 //! - every chillu variant, atomic **and** legacy `consonant + virama + ZWJ`
@@ -20,7 +20,7 @@
 
 use serde::Deserialize;
 
-use mlnorm::normalize;
+use mlnormalize::normalize;
 
 #[derive(Debug, Deserialize)]
 struct GoldenFile {

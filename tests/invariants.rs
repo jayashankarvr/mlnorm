@@ -11,7 +11,7 @@
 
 use proptest::prelude::*;
 
-use mlnorm::{normalize, stripped_key};
+use mlnormalize::{normalize, stripped_key};
 
 const ZWJ: char = '\u{200D}';
 const ZWNJ: char = '\u{200C}';

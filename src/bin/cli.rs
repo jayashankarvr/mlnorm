@@ -3,7 +3,7 @@
 
 //! Simple CLI for testing the normalizer.
 
-use mlnorm::normalize;
+use mlnormalize::normalize;
 use std::io::{self, Read};
 
 fn main() -> io::Result<()> {

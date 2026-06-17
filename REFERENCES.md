@@ -1,6 +1,6 @@
 # References
 
-`mlnorm` implements canonicalization **facts** about the Malayalam script and its
+`mlnormalize` implements canonicalization **facts** about the Malayalam script and its
 Unicode encoding, restated in our own transform pipeline. No text, tables, code, or
 datasets from any source below are reproduced or redistributed. These citations are
 scholarly credit; they imply no endorsement and create no license obligation.

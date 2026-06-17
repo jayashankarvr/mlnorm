@@ -9,7 +9,7 @@
 //! DESIGN_PRINCIPLES.md). These modules are `pub(crate)` implementation detail,
 //! not a public extension surface.
 //!
-//! Pipeline order (matching `docs/components/mlnorm.md`, with one documented
+//! Pipeline order (matching `docs/components/mlnormalize.md`, with one documented
 //! deviation around nta, see `crate::normalize`):
 //!
 //! 1. [`mojibake`], repair double-encoded UTF-8 (runs first, conservative)

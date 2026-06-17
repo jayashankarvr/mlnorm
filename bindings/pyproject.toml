@@ -3,7 +3,7 @@ requires = ["maturin>=1.5,<2.0"]
 build-backend = "maturin"
 
 [project]
-name = "mlnorm"
+name = "mlnormalize"
 # Tracks the normalizer contract version (NormVersion). See version.rs in the core
 # crate; the version is a load-bearing contract.
 version = "0.4.0"
@@ -21,13 +21,13 @@ classifiers = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/jayashankarvr/mlnorm"
-Issues = "https://github.com/jayashankarvr/mlnorm/issues"
+Homepage = "https://github.com/jayashankarvr/mlnormalize"
+Issues = "https://github.com/jayashankarvr/mlnormalize/issues"
 
 [tool.maturin]
-# The cdylib lives in this bindings crate; the import name is `mlnorm`.
+# The cdylib lives in this bindings crate; the import name is `mlnormalize`.
 manifest-path = "Cargo.toml"
-module-name = "mlnorm"
+module-name = "mlnormalize"
 # Type stub shipped alongside the compiled module for editor/type-checker support.
-include = ["mlnorm.pyi", "py.typed"]
+include = ["mlnormalize.pyi", "py.typed"]
 strip = true

@@ -1,5 +1,5 @@
 [package]
-name = "mlnorm-fuzz"
+name = "mlnormalize-fuzz"
 version = "0.0.0"
 publish = false
 edition = "2021"
@@ -10,7 +10,7 @@ cargo-fuzz = true
 [dependencies]
 libfuzzer-sys = "0.4"
 
-[dependencies.mlnorm]
+[dependencies.mlnormalize]
 path = ".."
 
 # Prevent this crate from being picked up by the workspace; cargo-fuzz manages it

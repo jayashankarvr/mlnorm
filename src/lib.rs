@@ -53,7 +53,7 @@ pub fn normalize(input: &str) -> String {
 /// `stripped_key(x)` is [`normalize`] with *all* joiners (ZWJ and ZWNJ) removed,
 /// including the conjunct-prevention ZWNJs `normalize` deliberately keeps, so two
 /// documents differing only in joiner placement collapse to one dedup key. See
-/// the `normalize` module and `docs/components/mlnorm.md`.
+/// the `normalize` module and `docs/components/mlnormalize.md`.
 pub fn stripped_key(input: &str) -> String {
     normalize::stripped_key(input)
 }

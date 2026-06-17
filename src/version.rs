@@ -4,7 +4,7 @@
 //! Version tracking for the normalizer.
 //!
 //! The contract (see ARCHITECTURE.md "The normalizer contract"): the version is
-//! a tripwire. Every downstream artifact records the `mlnorm` version it was
+//! a tripwire. Every downstream artifact records the `mlnormalize` version it was
 //! built against, and a **major** bump means the output bytes changed and every
 //! downstream artifact must be rebuilt. Treat the constants below as load-bearing.
 
@@ -41,7 +41,7 @@ impl core::fmt::Display for NormVersion {
 }
 
 /// 0.4.0, all rule content through the stripped_key milestone is implemented:
-/// steps 1 through 9 of `docs/components/mlnorm.md` (mojibake repair, NFC, chillu
+/// steps 1 through 9 of `docs/components/mlnormalize.md` (mojibake repair, NFC, chillu
 /// atomization, ZWJ strip, ZWNJ positional filter, nta canonicalization, archaic
 /// map, digit normalization, punctuation normalization) plus the
 /// [`crate::stripped_key`] second output.

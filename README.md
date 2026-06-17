@@ -1,4 +1,4 @@
-# mlnorm
+# mlnormalize
 
 A Malayalam Unicode normalizer. It maps Malayalam text to one canonical byte
 sequence per input, so the same text is identical at training time and inference
@@ -13,10 +13,10 @@ byte-identical output.
 ## Install
 
 ```sh
-cargo add mlnorm
+cargo add mlnormalize
 ```
 
-Also available for Python on PyPI (same byte-identical output): `pip install mlnorm`.
+Also available for Python on PyPI (same byte-identical output): `pip install mlnormalize`.
 
 ## What it does
 
@@ -40,7 +40,7 @@ text: train on `normalize`, match on `stripped_key`.
 ## Rust
 
 ```rust
-use mlnorm::normalize;
+use mlnormalize::normalize;
 
 let canonical = normalize("ൻ്റ"); // "ന്റ"
 ```
@@ -48,10 +48,10 @@ let canonical = normalize("ൻ്റ"); // "ന്റ"
 The public API:
 
 ```rust
-mlnorm::normalize(&str) -> String       // canonical text
-mlnorm::stripped_key(&str) -> String    // dedup/matching key (not training text)
-mlnorm::version() -> mlnorm::NormVersion // contract version
-mlnorm::version_string() -> String       // "0.4.0"
+mlnormalize::normalize(&str) -> String       // canonical text
+mlnormalize::stripped_key(&str) -> String    // dedup/matching key (not training text)
+mlnormalize::version() -> mlnormalize::NormVersion // contract version
+mlnormalize::version_string() -> String       // "0.4.0"
 ```
 
 Run the tests (golden file plus property-based invariants):
@@ -63,18 +63,18 @@ cargo test
 There is also a small CLI that normalizes stdin:
 
 ```sh
-echo "ൻ്റ" | cargo run --bin mlnorm-cli
+echo "ൻ്റ" | cargo run --bin mlnormalize-cli
 ```
 
 ## Python
 
 ```python
-import mlnorm
+import mlnormalize
 
-mlnorm.normalize("ൻ്റ")    # "ന്റ"
-mlnorm.stripped_key(text)   # dedup/matching key (not training text)
-mlnorm.version()            # (0, 4, 0)
-mlnorm.__version__          # "0.4.0"
+mlnormalize.normalize("ൻ്റ")    # "ന്റ"
+mlnormalize.stripped_key(text)   # dedup/matching key (not training text)
+mlnormalize.version()            # (0, 4, 0)
+mlnormalize.__version__          # "0.4.0"
 ```
 
 Build the wheel with [maturin](https://github.com/PyO3/maturin) from the `bindings/`
@@ -89,7 +89,7 @@ maturin develop             # install into the active venv
 ## Versioning
 
 The version is a load-bearing contract, not just a release tag. Every downstream
-artifact records the `mlnorm` version it was normalized with. A change in output
+artifact records the `mlnormalize` version it was normalized with. A change in output
 bytes is a version bump, and a major bump means downstream artifacts must be
 rebuilt. The Rust crate, the Python package, and `version()` all report the same
 version (0.4.0).

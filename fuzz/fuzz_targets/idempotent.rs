@@ -17,8 +17,8 @@ use libfuzzer_sys::fuzz_target;
 
 fuzz_target!(|data: &[u8]| {
     if let Ok(s) = std::str::from_utf8(data) {
-        let once = mlnorm::normalize(s);
-        let twice = mlnorm::normalize(&once);
+        let once = mlnormalize::normalize(s);
+        let twice = mlnormalize::normalize(&once);
         assert_eq!(once, twice, "normalize not idempotent for input {s:?}");
     }
 });

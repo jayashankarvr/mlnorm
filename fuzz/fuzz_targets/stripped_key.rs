@@ -19,8 +19,8 @@ const ZWNJ: char = '\u{200C}';
 
 fuzz_target!(|data: &[u8]| {
     if let Ok(s) = std::str::from_utf8(data) {
-        let once = mlnorm::stripped_key(s);
-        let twice = mlnorm::stripped_key(&once);
+        let once = mlnormalize::stripped_key(s);
+        let twice = mlnormalize::stripped_key(&once);
         assert_eq!(once, twice, "stripped_key not idempotent for input {s:?}");
         assert!(
             !once.contains(ZWJ) && !once.contains(ZWNJ),

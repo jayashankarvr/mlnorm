@@ -1,11 +1,11 @@
 [package]
-name = "mlnorm"
+name = "mlnormalize"
 version = "0.4.0"
 edition = "2021"
 authors = ["Jayashankar R <56070307+jayashankarvr@users.noreply.github.com>"]
 license = "Apache-2.0"
 description = "Malayalam Unicode normalizer: bit-identical normalization for training and inference"
-repository = "https://github.com/jayashankarvr/mlnorm"
+repository = "https://github.com/jayashankarvr/mlnormalize"
 keywords = ["malayalam", "unicode", "normalization", "nlp", "text-processing"]
 categories = ["text-processing"]
 readme = "README.md"
@@ -22,10 +22,10 @@ serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
 
 [lib]
-name = "mlnorm"
+name = "mlnormalize"
 path = "src/lib.rs"
 
 [[bin]]
-name = "mlnorm-cli"
+name = "mlnormalize-cli"
 path = "src/bin/cli.rs"
 required-features = []

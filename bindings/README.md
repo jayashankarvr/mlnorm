@@ -1,6 +1,6 @@
-# mlnorm (Python wheel)
+# mlnormalize (Python wheel)
 
-PyO3 bindings for the [`mlnorm`](https://github.com/jayashankarvr/mlnorm) Malayalam
+PyO3 bindings for the [`mlnormalize`](https://github.com/jayashankarvr/mlnormalize) Malayalam
 Unicode normalizer. The wheel is a thin wrapper around the Rust core, so Python gets
 byte-identical output. That identity is the point of the normalizer contract: one
 implementation, two callers.
@@ -8,17 +8,17 @@ implementation, two callers.
 ## Install
 
 ```sh
-pip install mlnorm
+pip install mlnormalize
 ```
 
-Also available as a Rust crate on crates.io (same byte-identical output): `cargo add mlnorm`.
+Also available as a Rust crate on crates.io (same byte-identical output): `cargo add mlnormalize`.
 
 ```python
-import mlnorm
-mlnorm.normalize("ൻ്റ")     # -> "ന്റ"  (byte-identical to the Rust core)
-mlnorm.stripped_key(text)    # -> str    (dedup/matching key; NOT training text)
-mlnorm.version()             # -> (0, 4, 0)
-mlnorm.__version__           # -> "0.4.0"
+import mlnormalize
+mlnormalize.normalize("ൻ്റ")     # -> "ന്റ"  (byte-identical to the Rust core)
+mlnormalize.stripped_key(text)    # -> str    (dedup/matching key; NOT training text)
+mlnormalize.version()             # -> (0, 4, 0)
+mlnormalize.__version__           # -> "0.4.0"
 ```
 
 ## Build

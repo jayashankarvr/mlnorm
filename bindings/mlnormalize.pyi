@@ -1,7 +1,7 @@
-"""Type stub for the mlnorm PyO3 wheel.
+"""Type stub for the mlnormalize PyO3 wheel.
 
-The implementation is the compiled Rust core (see crates/mlnorm). Output is
-byte-identical to the Rust `mlnorm::normalize` / `mlnorm::stripped_key`.
+The implementation is the compiled Rust core (see crates/mlnormalize). Output is
+byte-identical to the Rust `mlnormalize::normalize` / `mlnormalize::stripped_key`.
 """
 
 from typing import Tuple

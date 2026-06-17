@@ -11,7 +11,7 @@
 //! of small functions (DRY: each rule written once, composed in sequence). The
 //! 0.2.0 transforms live in the [`crate::transforms`] submodules.
 //!
-//! ## Pipeline (full pipeline, steps 1 through 9 of `docs/components/mlnorm.md`)
+//! ## Pipeline (full pipeline, steps 1 through 9 of `docs/components/mlnormalize.md`)
 //!
 //! ```text
 //! 1. mojibake repair         fix double-encoded UTF-8 (runs first, conservative)
@@ -67,7 +67,7 @@ const NA: char = '\u{0D28}';
 /// `consonant + virama + ZWJ` legacy sequence. Returns `None` for consonants
 /// that have no atomic chillu form.
 ///
-/// Table is exactly the one in `docs/components/mlnorm.md`:
+/// Table is exactly the one in `docs/components/mlnormalize.md`:
 ///
 /// | base | atomic |
 /// |------|--------|
@@ -185,7 +185,7 @@ pub fn normalize(input: &str) -> String {
 /// (step 5). The point is that two documents differing only in joiner placement, 
 /// `സോഫ്റ്റ്‌വെയർ` with and without the internal ZWNJ, collapse to the same key,
 /// so `mldata`'s dedup treats them as duplicates. **Train on `normalize`, match on
-/// `stripped_key`** (see `docs/components/mlnorm.md`).
+/// `stripped_key`** (see `docs/components/mlnormalize.md`).
 ///
 /// Implemented as `normalize` followed by an unconditional joiner strip, then a
 /// recompose, so it inherits every canonicalization `normalize` does and stays
