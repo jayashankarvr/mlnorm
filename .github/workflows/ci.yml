@@ -24,7 +24,9 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
-          python-version: "3.x"
+          # pyo3 0.20 supports up to 3.12; abi3 makes the wheel forward-compatible
+          # to 3.8+ so one build per OS covers all interpreter versions.
+          python-version: "3.12"
       - name: Build wheels
         uses: PyO3/maturin-action@v1
         with:
@@ -61,17 +63,20 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: dtolnay/rust-toolchain@stable
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.x"
       - name: Publish crate to crates.io
         env:
           CARGO_REGISTRY_TOKEN: ${{ secrets.CARGO_REGISTRY_TOKEN }}
         run: cargo publish
-      - name: Publish wheels to PyPI
+      # Gather the per-OS wheels + sdist built by the wheels/sdist jobs and upload
+      # them all, so PyPI gets real cross-platform artifacts (not an ubuntu rebuild).
+      - uses: actions/download-artifact@v4
+        with:
+          path: dist
+          merge-multiple: true
+      - name: Publish to PyPI
         uses: PyO3/maturin-action@v1
         env:
           MATURIN_PYPI_TOKEN: ${{ secrets.PYPI_API_TOKEN }}
         with:
-          command: publish
-          args: --manifest-path bindings/Cargo.toml
+          command: upload
+          args: --skip-existing dist/*

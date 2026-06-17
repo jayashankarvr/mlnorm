@@ -29,4 +29,7 @@ path = "src/lib.rs"
 # name is `mlnorm` (the Python import name); without the alias the two collide and
 # `mlnorm::normalize` would resolve to this crate, not the dependency.
 mlnorm_core = { package = "mlnorm", path = ".." }
-pyo3 = { version = "0.20", features = ["extension-module"] }
+# abi3-py38: build one forward-compatible wheel per platform (CPython 3.8+) against
+# the stable ABI, instead of one wheel per interpreter version. The binding is pure
+# functions (str/tuple), so it stays inside the limited API.
+pyo3 = { version = "0.20", features = ["extension-module", "abi3-py38"] }
