@@ -20,8 +20,9 @@
 //!   - `ററ` → `റ്റ` (tta digraph), ambiguous with a genuine ര+ര (rara); needs
 //!     context, handled elsewhere if ever (see correctness_issues.csv #25).
 //!
-//! Runs on the NFC'd char buffer before chillu atomization. Idempotent: none of
-//! the output characters is the left side of any rule.
+//! Runs after the deletion passes (ZWJ/ZWNJ strip, archaic, digits, punct) and before
+//! nta, on the NFC'd char buffer. Idempotent: none of the output characters is the left
+//! side of any rule.
 
 pub(crate) fn map(chars: &[char]) -> Vec<char> {
     let mut out: Vec<char> = Vec::with_capacity(chars.len());
