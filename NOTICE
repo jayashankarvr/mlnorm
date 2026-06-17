@@ -1,0 +1,12 @@
+mlnorm
+Copyright 2026 Jayashankar R
+
+This product includes software for deterministic Malayalam Unicode normalization
+(chillu atomization, ZWJ/ZWNJ handling, nta canonicalization, archaic/digit/
+punctuation canonicalization, and conservative mojibake repair).
+
+The normalization rules implemented here are restated facts about the Malayalam
+script and the Unicode standard (see REFERENCES.md). No third-party text, tables,
+code, or datasets are included or redistributed.
+
+The only runtime dependency is `unicode-normalization` (MIT OR Apache-2.0).

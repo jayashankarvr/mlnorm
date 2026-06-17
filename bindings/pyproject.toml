@@ -1,0 +1,33 @@
+[build-system]
+requires = ["maturin>=1.5,<2.0"]
+build-backend = "maturin"
+
+[project]
+name = "mlnorm"
+# Tracks the normalizer contract version (NormVersion). See version.rs in the core
+# crate; the version is a load-bearing contract.
+version = "0.4.0"
+description = "Malayalam Unicode normalizer: bit-identical normalization for training and inference"
+readme = "README.md"
+requires-python = ">=3.8"
+license = { text = "Apache-2.0" }
+authors = [{ name = "Jayashankar R", email = "56070307+jayashankarvr@users.noreply.github.com" }]
+keywords = ["malayalam", "unicode", "normalization", "nlp", "tokenizer"]
+classifiers = [
+    "Programming Language :: Rust",
+    "Programming Language :: Python :: 3",
+    "Topic :: Text Processing :: Linguistic",
+    "License :: OSI Approved :: Apache Software License",
+]
+
+[project.urls]
+Homepage = "https://github.com/jayashankarvr/mlnorm"
+Issues = "https://github.com/jayashankarvr/mlnorm/issues"
+
+[tool.maturin]
+# The cdylib lives in this bindings crate; the import name is `mlnorm`.
+manifest-path = "Cargo.toml"
+module-name = "mlnorm"
+# Type stub shipped alongside the compiled module for editor/type-checker support.
+include = ["mlnorm.pyi", "py.typed"]
+strip = true

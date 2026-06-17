@@ -1,0 +1,36 @@
+[package]
+name = "mlnorm-fuzz"
+version = "0.0.0"
+publish = false
+edition = "2021"
+
+[package.metadata]
+cargo-fuzz = true
+
+[dependencies]
+libfuzzer-sys = "0.4"
+
+[dependencies.mlnorm]
+path = ".."
+
+# Prevent this crate from being picked up by the workspace; cargo-fuzz manages it
+# as its own throwaway workspace.
+[workspace]
+
+[[bin]]
+name = "normalize_no_panic"
+path = "fuzz_targets/normalize_no_panic.rs"
+test = false
+doc = false
+
+[[bin]]
+name = "idempotent"
+path = "fuzz_targets/idempotent.rs"
+test = false
+doc = false
+
+[[bin]]
+name = "stripped_key"
+path = "fuzz_targets/stripped_key.rs"
+test = false
+doc = false

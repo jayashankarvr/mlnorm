@@ -1,0 +1,285 @@
+{
+  "_doc": "Golden file for mlnorm 0.3 (pre-freeze; 1.0.0 awaits a clean cargo-fuzz run). input -> expected canonical output. A diff blocks release. nta canonical form = base NA + virama + RRA (form A). Pipeline: mojibake repair -> NFC -> chillu atomization -> ZWJ strip + ZWNJ positional filter -> archaic map -> digits -> punctuation -> nta canonicalization -> final NFC recompose.",
+  "_version": [
+    0,
+    3,
+    0
+  ],
+  "cases": [
+    {
+      "name": "chillu_legacy_NNA",
+      "input": "ണ്‍",
+      "expected": "ൺ"
+    },
+    {
+      "name": "chillu_atomic_NNA",
+      "input": "ൺ",
+      "expected": "ൺ"
+    },
+    {
+      "name": "chillu_legacy_in_word_NNA",
+      "input": "മണ്‍ x",
+      "expected": "മൺ x"
+    },
+    {
+      "name": "chillu_legacy_NA",
+      "input": "ന്‍",
+      "expected": "ൻ"
+    },
+    {
+      "name": "chillu_atomic_NA",
+      "input": "ൻ",
+      "expected": "ൻ"
+    },
+    {
+      "name": "chillu_legacy_in_word_NA",
+      "input": "മന്‍ x",
+      "expected": "മൻ x"
+    },
+    {
+      "name": "chillu_legacy_RA",
+      "input": "ര്‍",
+      "expected": "ർ"
+    },
+    {
+      "name": "chillu_atomic_RA",
+      "input": "ർ",
+      "expected": "ർ"
+    },
+    {
+      "name": "chillu_legacy_in_word_RA",
+      "input": "മര്‍ x",
+      "expected": "മർ x"
+    },
+    {
+      "name": "chillu_legacy_LA",
+      "input": "ല്‍",
+      "expected": "ൽ"
+    },
+    {
+      "name": "chillu_atomic_LA",
+      "input": "ൽ",
+      "expected": "ൽ"
+    },
+    {
+      "name": "chillu_legacy_in_word_LA",
+      "input": "മല്‍ x",
+      "expected": "മൽ x"
+    },
+    {
+      "name": "chillu_legacy_LLA",
+      "input": "ള്‍",
+      "expected": "ൾ"
+    },
+    {
+      "name": "chillu_atomic_LLA",
+      "input": "ൾ",
+      "expected": "ൾ"
+    },
+    {
+      "name": "chillu_legacy_in_word_LLA",
+      "input": "മള്‍ x",
+      "expected": "മൾ x"
+    },
+    {
+      "name": "chillu_legacy_KA",
+      "input": "ക്‍",
+      "expected": "ൿ"
+    },
+    {
+      "name": "chillu_atomic_KA",
+      "input": "ൿ",
+      "expected": "ൿ"
+    },
+    {
+      "name": "chillu_legacy_in_word_KA",
+      "input": "മക്‍ x",
+      "expected": "മൿ x"
+    },
+    {
+      "name": "nta_form_a_canonical",
+      "input": "ന്റ",
+      "expected": "ന്റ"
+    },
+    {
+      "name": "nta_form_b_chillu",
+      "input": "ൻ്റ",
+      "expected": "ന്റ"
+    },
+    {
+      "name": "nta_legacy_via_atomization",
+      "input": "ന്‍്റ",
+      "expected": "ന്റ"
+    },
+    {
+      "name": "nta_in_word",
+      "input": "കന്റൻ",
+      "expected": "കന്റൻ"
+    },
+    {
+      "name": "nta_chillu_with_stray_zwj",
+      "input": "ൻ്‍റ",
+      "expected": "ന്റ"
+    },
+    {
+      "name": "zwj_chillu_position",
+      "input": "മന്‍",
+      "expected": "മൻ"
+    },
+    {
+      "name": "zwj_non_chillu_between_consonants",
+      "input": "ക‍ക",
+      "expected": "കക"
+    },
+    {
+      "name": "zwj_non_chillu_after_vowel",
+      "input": "അ‍ആ",
+      "expected": "അആ"
+    },
+    {
+      "name": "zwnj_keep_software",
+      "input": "സോഫ്റ്റ്‌വെയർ",
+      "expected": "സോഫ്റ്റ്‌വെയർ"
+    },
+    {
+      "name": "zwnj_keep_virama_consonant",
+      "input": "്‌ക",
+      "expected": "്‌ക"
+    },
+    {
+      "name": "zwnj_keep_in_conjunct",
+      "input": "ക്‌ല",
+      "expected": "ക്‌ല"
+    },
+    {
+      "name": "zwnj_word_final",
+      "input": "ക‌",
+      "expected": "ക"
+    },
+    {
+      "name": "zwnj_between_vowels",
+      "input": "അ‌ആ",
+      "expected": "അആ"
+    },
+    {
+      "name": "zwnj_doubled_after_virama",
+      "input": "്‌‌ക",
+      "expected": "്‌ക"
+    },
+    {
+      "name": "zwnj_no_virama_before",
+      "input": "ക‌ക",
+      "expected": "കക"
+    },
+    {
+      "name": "zwnj_virama_but_no_consonant_after",
+      "input": "്‌അ",
+      "expected": "്അ"
+    },
+    {
+      "name": "mixed_latin_malayalam",
+      "input": "Hello ന്റ world മന്‍",
+      "expected": "Hello ന്റ world മൻ"
+    },
+    {
+      "name": "mixed_software_label",
+      "input": "OS: സോഫ്റ്റ്‌വെയർ (software)",
+      "expected": "OS: സോഫ്റ്റ്‌വെയർ (software)"
+    },
+    {
+      "name": "empty",
+      "input": "",
+      "expected": ""
+    },
+    {
+      "name": "whitespace_spaces",
+      "input": "   ",
+      "expected": "   "
+    },
+    {
+      "name": "whitespace_mixed",
+      "input": "  \t\n ",
+      "expected": "  \t\n "
+    },
+    {
+      "name": "ascii_only",
+      "input": "Hello, World! 123",
+      "expected": "Hello, World! 123"
+    },
+    {
+      "name": "nasty_combined",
+      "input": "മന്‍ ൻ്റ ക‍ക ്‌ക ക‌",
+      "expected": "മൻ ന്റ കക ്‌ക ക"
+    },
+    {
+      "name": "mojibake_malayalam_word",
+      "input": "à´®à´²à´¯à´¾à´³à´",
+      "expected": "മലയാളം"
+    },
+    {
+      "name": "mojibake_in_label",
+      "input": "OS: à´®à´² ok",
+      "expected": "OS: മല ok"
+    },
+    {
+      "name": "mojibake_conservative_latin",
+      "input": "café",
+      "expected": "café"
+    },
+    {
+      "name": "archaic_ii_to_modern",
+      "input": "ൟ",
+      "expected": "ഈ"
+    },
+    {
+      "name": "archaic_in_word",
+      "input": "കൟക",
+      "expected": "കഈക"
+    },
+    {
+      "name": "archaic_date_mark_dropped",
+      "input": "ക൹ക",
+      "expected": "കക"
+    },
+    {
+      "name": "digits_malayalam_to_ascii",
+      "input": "൨൦൨൪",
+      "expected": "2024"
+    },
+    {
+      "name": "digits_in_word",
+      "input": "വർഷം ൨൦൨൪",
+      "expected": "വർഷം 2024"
+    },
+    {
+      "name": "punct_smart_quotes",
+      "input": "“x” ‘y’",
+      "expected": "\"x\" 'y'"
+    },
+    {
+      "name": "punct_dashes_ellipsis",
+      "input": "a—b…",
+      "expected": "a-b..."
+    },
+    {
+      "name": "punct_danda",
+      "input": "വാക്യം।",
+      "expected": "വാക്യം."
+    },
+    {
+      "name": "punct_nbsp",
+      "input": "a b",
+      "expected": "a b"
+    },
+    {
+      "name": "recompose_after_zwnj_strip",
+      "input": "െ‌ൗ",
+      "expected": "ൌ"
+    },
+    {
+      "name": "nta_hidden_by_archaic",
+      "input": "ൻ൰്റ",
+      "expected": "ന്റ"
+    }
+  ]
+}

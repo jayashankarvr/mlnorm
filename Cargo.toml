@@ -1,0 +1,31 @@
+[package]
+name = "mlnorm"
+version = "0.4.0"
+edition = "2021"
+authors = ["Jayashankar R <56070307+jayashankarvr@users.noreply.github.com>"]
+license = "Apache-2.0"
+description = "Malayalam Unicode normalizer: bit-identical normalization for training and inference"
+repository = "https://github.com/jayashankarvr/mlnorm"
+keywords = ["malayalam", "unicode", "normalization", "nlp", "text-processing"]
+categories = ["text-processing"]
+readme = "README.md"
+
+[dependencies]
+# The only runtime dependency. The core stays pure-Rust and dependency-light so it
+# is a clean crates.io / PyPI reuse surface. The PyO3 wheel is built from the
+# separate `bindings/` crate by maturin, so pyo3 is not a dependency of the core lib.
+unicode-normalization = "0.1"
+
+[dev-dependencies]
+proptest = "1.0"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+
+[lib]
+name = "mlnorm"
+path = "src/lib.rs"
+
+[[bin]]
+name = "mlnorm-cli"
+path = "src/bin/cli.rs"
+required-features = []

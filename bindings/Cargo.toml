@@ -1,0 +1,32 @@
+# PyO3 wheel packaging for mlnorm, built by maturin.
+#
+# This is a thin cdylib wrapper around the `mlnorm` core crate (one directory up).
+# The binding code lives in `src/lib.rs` here; it forwards to the core crate and is
+# compiled into a Python extension module (cdylib) that maturin packages into a
+# wheel. Keeping it separate from the core crate's `[lib]` means `cargo build`
+# `cargo test` of the core never pull in the pyo3 toolchain, and the Rust crate
+# stays publishable to crates.io on its own.
+[package]
+name = "mlnorm-py"
+version = "0.4.0"
+edition = "2021"
+authors = ["Jayashankar R <56070307+jayashankarvr@users.noreply.github.com>"]
+license = "Apache-2.0"
+description = "Python bindings (PyO3 wheel) for the mlnorm Malayalam normalizer"
+publish = false
+
+# Standalone crate: built by maturin, not part of the main cargo workspace.
+[workspace]
+
+[lib]
+# maturin looks for a cdylib named `mlnorm` (the import name).
+name = "mlnorm"
+crate-type = ["cdylib"]
+path = "src/lib.rs"
+
+[dependencies]
+# The pure-Rust core crate, aliased to `mlnorm_core` because this cdylib's own lib
+# name is `mlnorm` (the Python import name); without the alias the two collide and
+# `mlnorm::normalize` would resolve to this crate, not the dependency.
+mlnorm_core = { package = "mlnorm", path = ".." }
+pyo3 = { version = "0.20", features = ["extension-module"] }
