@@ -21,13 +21,13 @@
 //! # Pipeline (pre-freeze; 1.0.0 awaits a clean cargo-fuzz run)
 //! 1. Mojibake repair (double-encoded UTF-8, conservative; runs first)
 //! 2. NFC normalization (Unicode canonical composition)
-//! 3. Chillu atomization (`consonant + virama + ZWJ` → atomic chillu U+0D7A..U+0D7F)
+//! 3. Chillu atomization (`consonant + virama + ZWJ` -> atomic chillu U+0D7A..U+0D7F)
 //! 4. ZWJ stripping (all remaining ZWJ removed)
 //! 5. ZWNJ positional filter (keep iff `virama + ZWNJ + consonant`, else strip)
-//! 6. NTA canonicalization (the two ന്റ encodings → base NA + virama + RRA)
-//! 7. Archaic codepoint map (ൟ→ഈ, archaic numeric/date signs dropped)
-//! 8. Digit normalization (Malayalam digits → ASCII, one direction)
-//! 9. Punctuation normalization (danda, smart quotes, ellipsis → ASCII)
+//! 6. NTA canonicalization (the two ന്റ encodings -> base NA + virama + RRA)
+//! 7. Archaic codepoint map (ൟ->ഈ, archaic numeric/date signs dropped)
+//! 8. Digit normalization (Malayalam digits -> ASCII, one direction)
+//! 9. Punctuation normalization (danda, smart quotes, ellipsis -> ASCII)
 //! + final NFC recompose (re-compose pairs exposed by joiner removal)
 //!
 //! A **second output**, [`stripped_key`], produces a fully joiner-stripped

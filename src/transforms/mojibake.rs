@@ -33,7 +33,7 @@
 //! of `U+0080..U+00FF` chars, so the detector never fires.
 
 /// The eight printable Windows-1252 codepoints that live in `0x80..=0x9F` and map
-/// to `U+2000`-block characters instead of C1 controls. Their inverse (char →
+/// to `U+2000`-block characters instead of C1 controls. Their inverse (char ->
 /// source byte) is needed to reconstruct cp1252 mojibake.
 #[inline]
 fn cp1252_high_byte(c: char) -> Option<u8> {

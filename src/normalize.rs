@@ -37,7 +37,7 @@
 //!    `nta_with_stray_zwj_is_idempotent`.
 //!
 //! 2. **A final NFC recompose pass.** Removing a joiner can place two codepoints
-//!    adjacent that NFC composes (e.g. `െ U+0D46 + ZWNJ + U+0D57` → after strip →
+//!    adjacent that NFC composes (e.g. `െ U+0D46 + ZWNJ + U+0D57` -> after strip ->
 //!    `U+0D46 U+0D57`, which composes to `ൌ U+0D4C`). The initial NFC ran *before*
 //!    the strip, so without a second pass `normalize` would not be idempotent
 //!    (pass 2 would compose what pass 1 left apart). Regression: golden
@@ -154,11 +154,11 @@ pub fn normalize(input: &str) -> String {
     let chars = punct::normalize_punct(&chars);
 
     // Step 9.5 (post-deletion fixups): visual-spoofing + archaic-sequence fixes (native review #25):
-    // െെ→ൈ, ഉൗ→ഊ, എെ→ഐ, samvruthokaram ു්→්, dot-reph→chillu RR. Ordering is
+    // െെ->ൈ, ഉൗ->ഊ, എെ->ഐ, samvruthokaram ു්->්, dot-reph->chillu RR. Ordering is
     // load-bearing for idempotency: run it AFTER every deletion pass (ZWJ/ZWNJ
     // strip, archaic, digits, punct) so a stripped/deleted char that newly
     // juxtaposes ു and ് is still cleaned (proptest: "ു ZWNJ ്"), but BEFORE nta
-    // so the cluster spoof can create by dropping ു (e.g. ൻ ു ് റ → ൻ ് റ) is
+    // so the cluster spoof can create by dropping ു (e.g. ൻ ു ് റ -> ൻ ് റ) is
     // then canonicalized to form A by nta (proptest: "ൻ ു ് റ"). A no-op on clean text.
     let chars = spoof::map(&chars);
 
@@ -427,11 +427,11 @@ mod tests {
 
     #[test]
     fn spoof_fixes_through_pipeline() {
-        // ക + െ + െ  (ka + two E signs)  →  ക + ൈ
+        // ക + െ + െ  (ka + two E signs)  ->  ക + ൈ
         assert_eq!(normalize("\u{0D15}\u{0D46}\u{0D46}"), "\u{0D15}\u{0D48}");
-        // കു്  (ka + u-sign + virama, archaic samvruthokaram)  →  ക്
+        // കു്  (ka + u-sign + virama, archaic samvruthokaram)  ->  ക്
         assert_eq!(normalize("\u{0D15}\u{0D41}\u{0D4D}"), "\u{0D15}\u{0D4D}");
-        // തൎക്കം dot-reph → തർക്കം
+        // തൎക്കം dot-reph -> തർക്കം
         assert_eq!(
             normalize("\u{0D24}\u{0D4E}\u{0D15}\u{0D4D}\u{0D15}\u{0D02}"),
             "\u{0D24}\u{0D7C}\u{0D15}\u{0D4D}\u{0D15}\u{0D02}"

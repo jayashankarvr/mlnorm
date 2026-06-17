@@ -17,9 +17,9 @@
 //! 3. chillu atomization (in `crate::normalize`)
 //! 4. ZWJ strip + 5. ZWNJ positional filter (in `crate::normalize`)
 //! 6. nta canonicalization (in `crate::normalize`)
-//! 7. [`archaic`], archaic codepoint map (ൟ→ഈ, etc.)
-//! 8. [`digits`], Malayalam digits → ASCII (one direction)
-//! 9. [`punct`], danda, smart quotes, ellipsis → canonical ASCII
+//! 7. [`archaic`], archaic codepoint map (ൟ->ഈ, etc.)
+//! 8. [`digits`], Malayalam digits -> ASCII (one direction)
+//! 9. [`punct`], danda, smart quotes, ellipsis -> canonical ASCII
 
 pub(crate) mod archaic;
 pub(crate) mod digits;

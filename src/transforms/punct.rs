@@ -6,13 +6,13 @@
 //! Collapse the many Unicode encodings of the same punctuation mark to one ASCII
 //! form so the tokenizer doesn't fragment on typographic variation:
 //!
-//! - smart quotes (single + double, plus the low-9 variants) → ASCII `'` / `"`
-//! - en/em dash, horizontal bar → ASCII `-`
-//! - the danda and double danda (U+0964/U+0965) → ASCII `.`, Malayalam prose uses
+//! - smart quotes (single + double, plus the low-9 variants) -> ASCII `'` / `"`
+//! - en/em dash, horizontal bar -> ASCII `-`
+//! - the danda and double danda (U+0964/U+0965) -> ASCII `.`, Malayalam prose uses
 //!   the ASCII period as its sentence terminator; the Devanagari-derived danda
 //!   shows up only in transliterated/imported text and means the same stop.
-//! - the ellipsis character (U+2026) → three ASCII dots
-//! - NBSP and the narrow/figure spaces → a plain ASCII space
+//! - the ellipsis character (U+2026) -> three ASCII dots
+//! - NBSP and the narrow/figure spaces -> a plain ASCII space
 //!
 //! One direction, frozen for the 1.x line. Note ellipsis maps to a *string*, so
 //! this rule is the one transform that can change char count; it runs last and the

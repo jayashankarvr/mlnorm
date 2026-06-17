@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: Apache-2.0
 // Copyright 2026 Jayashankar R
 
-//! Step 8, digit normalization (0.2.0). **One direction:** Malayalam → ASCII.
+//! Step 8, digit normalization (0.2.0). **One direction:** Malayalam -> ASCII.
 //!
 //! Malayalam digits (U+0D66..U+0D6F, ൦..൯) are vanishingly rare in modern text;
 //! ASCII digits dominate even in otherwise pure-Malayalam writing. Collapsing to
